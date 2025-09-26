@@ -1,0 +1,68 @@
+================================
+Version Control Systems (VCS)
+================================
+
+What is it?
+- A Version Control System (or VCS) is a tool that helps you track changes to your files over time.
+- It's like having a "save" button for your entire project, but it remembers every save you've ever made.
+- This allows you to recall specific versions later, compare changes, and see who changed what.
+
+Why use it?
+- Collaboration: Multiple people can work on the same project without overwriting each other's work.
+- History: You have a complete history of the project. You can go back to a previous version if you make a mistake.
+- Branching: You can create separate "branches" to work on new features without affecting the main project. Once the feature is ready, you can merge it back.
+
+Types of VCS:
+- Centralized (CVCS): A single central server contains all the files (e.g., Subversion, Perforce).
+- Distributed (DVCS): Every developer has a full copy of the project history on their local machine (e.g., Git, Mercurial). Git is the most popular DVCS.
+
+
+================================
+Git
+================================
+
+What is it?
+- Git is a free and open-source distributed version control system.
+- It's a command-line tool that you run on your computer to track your code changes.
+- It is extremely popular in the software development industry.
+
+Key Concepts:
+- Repository (Repo): A folder that Git is tracking. It contains all your project files and the history of changes.
+- Commit: A "snapshot" of your files at a specific point in time. You create a commit to save your changes to the repository's history.
+- Branch: A separate line of development. The main branch is usually called "main" or "master".
+- Merge: The process of combining changes from different branches.
+- Clone: Creating a local copy of a remote repository.
+- Push: Sending your committed changes from your local repository to a remote repository.
+- Pull: Fetching and merging changes from a remote repository into your local repository.
+
+Common Commands for Pushing Code:
+1. git add <file-name> or git add .
+   - Use this to stage your changes. Staging is like putting your changes in a box before you seal it. `git add .` stages all files in the current directory.
+
+2. git commit -m "Your commit message"
+   - This saves your staged changes to your local repository's history. The message should briefly describe the changes you made.
+
+3. git push <remote-name> <branch-name>
+   - This sends your committed changes to the remote repository (like GitHub). For example: `git push origin main`.
+
+
+================================
+GitHub
+================================
+
+What is it?
+- GitHub is a web-based platform that provides hosting for Git repositories.
+- It's a website where you can upload your Git repositories and collaborate with others.
+- It is NOT Git. It's a service that is built on top of Git.
+
+Why use it?
+- Remote Storage: A safe place to keep a copy of your code off your machine.
+- Collaboration: Provides tools to make working with others easier (e.g., Pull Requests, Issues, Code Reviews).
+- Portfolio: You can showcase your projects to potential employers.
+- Community: You can contribute to open-source projects and learn from other developers.
+
+Key Features:
+- Repositories: Where your projects live.
+- Pull Requests (PRs): A way to propose changes to a repository. Others can review your changes before they are merged.
+- Issues: A way to track bugs, feature requests, and other tasks.
+- Forks: A personal copy of someone else's repository that you can freely experiment with.
