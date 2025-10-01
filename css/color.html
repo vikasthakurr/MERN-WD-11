@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Colors</title>
+
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #333;
+      }
+      h1, h2, h3 {
+        font-weight: 600;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+      }
+      h1 {
+        font-size: 2.2em;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.3em;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .color-box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap; /* Ensures code doesn't overflow */
+        border: 1px solid #ddd;
+      }
+      code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        background-color: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+      }
+      hr {
+        margin: 2.5em 0;
+        border: 0;
+        border-top: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Understanding CSS Colors</h1>
+    <p>
+      In CSS, colors can be applied to elements to change their text color, background color, borders, and more. There are several ways to define a color.
+    </p>
+    <hr />
+
+    <h2>1. Color Keywords (Named Colors)</h2>
+    <p>
+      CSS has a list of predefined color names that you can use directly. There are over 140 named colors, including common ones like <code>red</code>, <code>blue</code>, <code>green</code>, <code>orange</code>, and <code>transparent</code>.
+    </p>
+    <div class="color-box" style="background-color: dodgerblue"></div>
+    <pre><code>.element {
+  color: dodgerblue;
+  background-color: lightgray;
+}</code></pre>
+    <hr />
+
+    <h2>2. RGB and RGBA Colors</h2>
+    <p>
+      The RGB (Red, Green, Blue) model defines a color by mixing red, green, and blue light. Each value can be an integer between 0 and 255.
+    </p>
+    <p>The RGBA model adds an "alpha" channel, which controls the opacity of the color. The alpha value is a number between 0.0 (fully transparent) and 1.0 (fully opaque).</p>
+    <div class="color-box" style="background-color: rgb(255, 99, 71)"></div>
+    <div class="color-box" style="background-color: rgba(255, 99, 71, 0.5)"></div>
+    <pre><code>/* RGB - Solid Tomato Color */
+.solid-color {
+  background-color: rgb(255, 99, 71);
+}
+
+/* RGBA - 50% Transparent Tomato Color */
+.transparent-color {
+  background-color: rgba(255, 99, 71, 0.5);
+}</code></pre>
+    <hr />
+
+    <h2>3. Hexadecimal (HEX) Colors</h2>
+    <p>
+      HEX colors are a very common way to specify colors. They are a hexadecimal representation of the RGB values. The format starts with a <code>#</code> followed by six characters (RRGGBB).
+    </p>
+    <p>A shorthand 3-digit version (<code>#RGB</code>) can be used if each pair of characters is the same (e.g., <code>#FF0000</code> can be written as <code>#F00</code>).</p>
+    <div class="color-box" style="background-color: #32CD32"></div>
+    <div class="color-box" style="background-color: #F0C"></div>
+    <pre><code>/* 6-digit HEX - Lime Green */
+.full-hex {
+  color: #32CD32;
+}
+
+/* 3-digit shorthand HEX - A shade of magenta */
+.shorthand-hex {
+  background-color: #F0C; /* Equivalent to #FF00CC */
+}</code></pre>
+    <hr />
+
+    <h2>4. HSL and HSLA Colors</h2>
+    <p>
+      The HSL (Hue, Saturation, Lightness) model is often more intuitive for humans to work with.
+    </p>
+    <ul>
+        <li><strong>Hue:</strong> A degree on the color wheel (0 to 360). 0 is red, 120 is green, 240 is blue.</li>
+        <li><strong>Saturation:</strong> A percentage value. 0% is a shade of gray, and 100% is the full color.</li>
+        <li><strong>Lightness:</strong> A percentage value. 0% is black, 50% is the normal color, and 100% is white.</li>
+    </ul>
+    <p>Like RGBA, HSLA adds an alpha channel for opacity.</p>
+    <div class="color-box" style="background-color: hsl(240, 100%, 50%)"></div>
+    <div class="color-box" style="background-color: hsla(240, 100%, 50%, 0.5)"></div>
+    <pre><code>/* HSL - A pure, vibrant blue */
+.vibrant-blue {
+  background-color: hsl(240, 100%, 50%);
+}
+
+/* HSLA - The same blue, but 50% transparent */
+.transparent-blue {
+  background-color: hsla(240, 100%, 50%, 0.5);
+}</code></pre>
+
+  </body>
+</html>

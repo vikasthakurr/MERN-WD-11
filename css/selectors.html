@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selectors Notes (in comments)</title>
+  </head>
+  <body>
+    <!--
+========================================
+  UNDERSTANDING CSS SELECTORS
+========================================
+
+  CSS selectors are patterns used to select and style the HTML elements you want. 
+  They are the foundation of applying styles to a web page.
+
+
+----------------------------------------
+  1. Basic Selectors
+----------------------------------------
+
+  ### Type Selector (or Element Selector)
+  Selects all elements of a given type, like <p>, <h1>, or <div>.
+  
+  CSS Example:
+  p {
+    color: gray;
+  }
+
+  ### Class Selector
+  Selects all elements with a specific class attribute. This is one of the most common and useful selectors. It starts with a period (.).
+  
+  CSS Example:
+  .highlight {
+    background-color: yellow;
+  }
+
+  ### ID Selector
+  Selects a single, unique element with a specific ID attribute. An ID should be unique within the page. It starts with a hash (#).
+
+  CSS Example:
+  #header {
+    border-bottom: 2px solid black;
+  }
+
+  ### Universal Selector
+  Selects all elements on the page. It is represented by an asterisk (*).
+
+  CSS Example:
+  * {
+    box-sizing: border-box;
+  }
+
+  ### Attribute Selector
+  Selects elements based on the presence or value of an attribute.
+
+  CSS Example:
+  a[target="_blank"] {
+    opacity: 0.8;
+  }
+
+
+----------------------------------------
+  2. Combinators
+----------------------------------------
+  
+  Combinators allow you to combine selectors to create more specific rules 
+  based on the relationship between elements.
+
+  ### Descendant Combinator (space)
+  Selects elements that are descendants (nested anywhere inside) of another element.
+
+  CSS Example:
+  .article p {
+    line-height: 1.5;
+  }
+
+  ### Child Combinator (>)
+  Selects elements that are direct children of another element.
+
+  CSS Example:
+  ul > li {
+    list-style-type: circle;
+  }
+
+  ### Adjacent Sibling Combinator (+)
+  Selects an element that is immediately after another element at the same level.
+
+  CSS Example:
+  h2 + p {
+    margin-top: 0;
+  }
+
+  ### General Sibling Combinator (~)
+  Selects all elements that are siblings after another element at the same level.
+
+  CSS Example:
+  h2 ~ p {
+    text-indent: 2em;
+  }
+
+
+----------------------------------------
+  3. Pseudo-Classes
+----------------------------------------
+
+  A pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s).
+
+  CSS Examples:
+  a:hover {
+    text-decoration: underline;
+  }
+
+  input:focus {
+    border-color: blue;
+  }
+
+  li:first-child {
+    font-weight: bold;
+  }
+
+  li:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+
+----------------------------------------
+  4. Pseudo-Elements
+----------------------------------------
+
+  A pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element(s). They use a double colon (::).
+
+  CSS Examples:
+  blockquote::before {
+    content: "\201C"; /* Unicode for a left double quote */
+    font-size: 3em;
+    color: lightgray;
+  }
+
+  p::first-line {
+    font-variant: small-caps;
+  }
+
+
+----------------------------------------
+  A Note on Specificity
+----------------------------------------
+
+  Specificity is the algorithm browsers use to determine which CSS rule is applied 
+  if multiple rules point to the same element. The more specific a selector is, 
+  the more weight it has.
+
+  The hierarchy from most to least specific is:
+  1. Inline styles (style="...")
+  2. ID selectors (#header)
+  3. Class selectors (.highlight), attribute selectors ([type="text"]), and pseudo-classes (:hover)
+  4. Type selectors (div) and pseudo-elements (::before)
+
+  Understanding specificity is key to troubleshooting why your CSS rules 
+  aren't applying as expected.
+-->
+  </body>
+</html>

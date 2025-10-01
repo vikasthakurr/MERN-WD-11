@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Units Notes</title>
+
+    <style>
+      /* Original styles from the file */
+      html {
+        /* font-size: 32px; */ /* Commented out to not make the notes text too large */
+      }
+      .parent {
+        background-color: beige;
+        width: 100vw;
+        height: 100vh;
+      }
+      .child {
+        height: 50%;
+        width: 50%;
+        background-color: red;
+      }
+      p {
+        /* font-size: 1rem; */ /* Commented out to not affect notes paragraphs */
+      }
+
+      /* Styles for the notes */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #333;
+      }
+      h1, h2, h3 {
+        font-weight: 600;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+      }
+      h1 {
+        font-size: 2.2em;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.3em;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      h3 {
+        font-size: 1.4em;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap; /* Ensures code doesn't overflow */
+        border: 1px solid #ddd;
+      }
+      code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        background-color: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+      }
+      hr {
+        margin: 2.5em 0;
+        border: 0;
+        border-top: 1px solid #eee;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      li {
+        margin-bottom: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Understanding CSS Units</h1>
+    <p>
+      CSS units are essential for defining the size and spacing of elements on a
+      web page. They can be divided into two main categories:
+      <strong>Absolute</strong> and <strong>Relative</strong>.
+    </p>
+    <hr />
+    <h2>1. Absolute Units</h2>
+    <p>
+      Absolute units are fixed and do not change based on any other element or
+      screen size. The most common absolute unit is the pixel (<code>px</code>).
+    </p>
+    <h3><code>px</code> (Pixels)</h3>
+    <ul>
+      <li>A pixel is a single dot on the screen.</li>
+      <li>
+        <code>1px</code> is the same size regardless of the parent element's
+        size.
+      </li>
+      <li>
+        They are useful for elements that you want to have a fixed size, such as
+        borders or icons.
+      </li>
+    </ul>
+    <strong>Example:</strong>
+    <pre><code>.element {
+  border: 1px solid black; /* A border that is always 1 pixel wide */
+  margin: 10px;           /* A margin that is always 10 pixels */
+}</code></pre>
+    <hr />
+    <h2>2. Relative Units</h2>
+    <p>
+      Relative units are flexible and their size is determined by the size of
+      another element, the font size, or the viewport size. They are crucial
+      for creating responsive and accessible designs that adapt to different
+      screen sizes and user preferences.
+    </p>
+    <h3><code>%</code> (Percentage)</h3>
+    <ul>
+      <li>
+        The percentage unit is relative to the same property of the
+        <strong>parent element</strong>.
+      </li>
+      <li>
+        If you set an element's <code>width</code> to <code>50%</code>, it will
+        be half the width of its parent.
+      </li>
+    </ul>
+    <strong>Example (from your original file):</strong>
+    <pre><code>.parent {
+  width: 100vw; /* Takes up the full browser width */
+}
+
+.child {
+  width: 50%; /* This will be 50% of the parent's width */
+  height: 50%; /* This will be 50% of the parent's height */
+}</code></pre>
+    <h3>
+      <code>vw</code> and <code>vh</code> (Viewport Width and Viewport Height)
+    </h3>
+    <ul>
+      <li>
+        These units are relative to the <strong>viewport</strong>, which is the
+        visible area of the browser window.
+      </li>
+      <li><code>1vw</code> = 1% of the viewport's width.</li>
+      <li><code>1vh</code> = 1% of the viewport's height.</li>
+      <li>
+        These are great for creating full-screen sections or elements that
+        should always be visible on the screen.
+      </li>
+    </ul>
+    <strong>Example (from your original file):</strong>
+    <pre><code>.parent {
+  width: 100vw;  /* The element will be as wide as the browser window. */
+  height: 100vh; /* The element will be as tall as the browser window. */
+}</code></pre>
+    <h3><code>rem</code> (Root em)</h3>
+    <ul>
+      <li>
+        The <code>rem</code> unit is relative to the <code>font-size</code> of
+        the <strong>root element</strong> (<code>&lt;html&gt;</code>).
+      </li>
+      <li>
+        This is extremely useful for accessibility. If a user changes their
+        browser's default font size, all elements sized with <code>rem</code> will
+        scale accordingly.
+      </li>
+    </ul>
+    <strong>Example (from your original file):</strong>
+    <pre><code>html {
+  font-size: 32px; /* We set the root font size here. */
+}
+
+p {
+  /* 
+    1rem is equal to the root font size.
+    In this case, 1rem = 32px.
+    If we changed the html font-size to 16px, this paragraph's font-size would become 16px.
+  */
+  font-size: 1rem; 
+}</code></pre>
+    <h3><code>em</code></h3>
+    <ul>
+      <li>
+        The <code>em</code> unit is relative to the <code>font-size</code> of
+        the <strong>parent element</strong>.
+      </li>
+      <li>
+        If a parent has <code>font-size: 16px</code>, then <code>1em</code> for
+        a child element will be <code>16px</code>, and <code>2em</code> will be
+        <code>32px</code>.
+      </li>
+      <li>
+        This can be tricky because <code>em</code> units can compound. If you
+        have nested elements each with <code>font-size: 1.2em</code>, the text
+        will get progressively larger.
+      </li>
+    </ul>
+    <strong>Example:</strong>
+    <pre><code>.container {
+  font-size: 20px;
+}
+
+.container p {
+  /* This will be 1.5 * 20px = 30px */
+  font-size: 1.5em; 
+}</code></pre>
+    <hr />
+    <h2>Summary and Best Practices</h2>
+    <ul>
+      <li>
+        <strong>For Fonts and Spacing:</strong> Use <code>rem</code> for most
+        of your typography and spacing (<code>margin</code>, <code>padding</code
+        >). This ensures your layout scales predictably and respects the user's
+        browser settings for font size, which is great for accessibility.
+      </li>
+      <li>
+        <strong>For Layouts:</strong> Use <code>%</code> when you want an
+        element's size to be relative to its container (e.g., columns in a
+        grid).
+      </li>
+      <li>
+        <strong>For Full-Screen Elements:</strong> Use <code>vw</code> and
+        <code>vh</code> to size elements relative to the browser window itself.
+      </li>
+      <li>
+        <strong>For Fixed Sizes:</strong> Use <code>px</code> for things you
+        don't want to scale, like borders or very specific, small design
+        elements.
+      </li>
+    </ul>
+  </body>
+</html>

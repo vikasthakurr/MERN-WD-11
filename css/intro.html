@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to CSS</title>
+
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        color: #333;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 600;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+      }
+      h1 {
+        font-size: 2.2em;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.3em;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .example-box {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 1em;
+        background-color: #fafafa;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap; /* Ensures code doesn't overflow */
+        border: 1px solid #ddd;
+      }
+      code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        background-color: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+      }
+      hr {
+        margin: 2.5em 0;
+        border: 0;
+        border-top: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Introduction to CSS</h1>
+    <p>
+      Welcome to CSS! This guide will introduce you to the basic concepts of
+      what CSS is and how to use it.
+    </p>
+    <hr />
+
+    <h2>What is CSS?</h2>
+    <p>
+      CSS stands for <strong>Cascading Style Sheets</strong>. It is the language
+      we use to style an HTML document. CSS describes how HTML elements should
+      be displayed on screen, on paper, or in other media.
+    </p>
+    <p>
+      Think of HTML as the skeleton of a webpage (the structure and content),
+      and CSS as the clothes, colors, and overall appearance (the presentation).
+    </p>
+
+    <hr />
+
+    <h2>Why Use CSS? The Separation of Concerns</h2>
+    <p>
+      The most important reason to use CSS is to separate the content and
+      structure (HTML) from the presentation (CSS). This makes your code much
+      easier to manage.
+    </p>
+    <ul>
+      <li>
+        <strong>Easier Maintenance:</strong> You can change the entire look of a
+        website by editing just one CSS file.
+      </li>
+      <li>
+        <strong>Faster Load Times:</strong> One CSS file can be used for
+        multiple pages, and the browser can cache it, speeding up page loads.
+      </li>
+      <li>
+        <strong>Cleaner HTML:</strong> Your HTML files become smaller and more
+        readable without all the styling information cluttered inside them.
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>How to Add CSS to a Page</h2>
+    <p>There are three ways to include CSS in an HTML file.</p>
+
+    <h3>1. External CSS (Recommended)</h3>
+    <p>
+      This is the best method. You write your CSS rules in a separate file with
+      a <code>.css</code> extension and link to it from your HTML file using a
+      <code>&lt;link&gt;</code> tag in the <code>&lt;head&gt;</code> section.
+    </p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Website&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>2. Internal CSS</h3>
+    <p>
+      You can place CSS rules directly inside the HTML file by putting them
+      within a <code>&lt;style&gt;</code> tag in the
+      <code>&lt;head&gt;</code> section. This is useful for single pages or for
+      styles that only apply to one specific page.
+    </p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Page&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      background-color: lightblue;
+    }
+    h1 {
+      color: navy;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>3. Inline CSS</h3>
+    <p>
+      You can apply styles directly to a single HTML element using the
+      <code>style</code> attribute. This method is generally discouraged because
+      it mixes content and presentation, making the code harder to maintain.
+    </p>
+    <pre><code>&lt;h1 style="color: blue; text-align: center;"&gt;A Blue, Centered Heading&lt;/h1&gt;
+&lt;p style="color: red;"&gt;A red paragraph.&lt;/p&gt;</code></pre>
+
+    <hr />
+
+    <h2>Basic CSS Syntax</h2>
+    <p>A CSS rule consists of a selector and a declaration block.</p>
+    <div class="example-box">
+      <img
+        src="https://www.w3schools.com/css/selector.gif"
+        alt="CSS Syntax Diagram"
+        style="max-width: 100%"
+      />
+      <p style="text-align: center; font-size: 0.9em; color: gray">
+        Image credit: w3schools.com
+      </p>
+    </div>
+    <ul>
+      <li>
+        The <strong>selector</strong> points to the HTML element you want to
+        style (e.g., <code>p</code>).
+      </li>
+      <li>
+        The <strong>declaration block</strong> contains one or more declarations
+        separated by semicolons.
+      </li>
+      <li>
+        Each <strong>declaration</strong> includes a CSS
+        <strong>property</strong> name and a <strong>value</strong>, separated
+        by a colon (e.g., <code>color: red;</code>).
+      </li>
+    </ul>
+    <pre><code>/* This entire block is a CSS rule */
+
+/* 'p' is the selector */
+p {
+  /* 'color: red;' is a declaration */
+  color: red; /* 'color' is the property, 'red' is the value */
+  font-size: 16px;
+}</code></pre>
+  </body>
+</html>
