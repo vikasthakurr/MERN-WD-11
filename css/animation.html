@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 700px;
+        height: 600px;
+        background-color: beige;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      .ball {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation-name: jump;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+
+      @keyframes jump {
+        0% {
+          transform: translateY(0px);
+        }
+        25% {
+          transform: translateY(-400px);
+          background-color: blue;
+        }
+        50% {
+          background-color: yellow;
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="ball">IND VS WI</div>
+    </div>
+  </body>
+</html>
+
+<!--
+  **CSS Animation Explained**
+
+  Here's a breakdown of the animation used in this file:
+
+  - **`@keyframes`**:
+    - The `@keyframes` rule specifies the animation code.
+    - The animation is created by gradually changing from one set of CSS styles to another.
+    - In this example, the animation is named "jump".
+
+  - **Animation Properties for `.ball` class**:
+    - **`animation-name: jump;`**: Binds the `@keyframes` named "jump" to the `.ball` element.
+    - **`animation-duration: 3s;`**: Specifies that one animation cycle should take 3 seconds to complete.
+    - **`animation-iteration-count: infinite;`**: Makes the animation repeat forever.
+    - **`animation-timing-function: ease-in-out;`**: Defines the speed curve of the animation. It starts slow, accelerates, and then slows down at the end.
+
+  - **The "jump" Animation Flow**:
+    - **`0%` (Start)**: The ball is at its original position (`transform: translateY(0px)`).
+    - **`25%`**: The ball moves 400px upwards (`transform: translateY(-400px)`) and its color changes to blue.
+    - **`50%`**: The ball's color changes to yellow while it's in the air.
+    - **`100%` (End)**: The ball returns to its original position (`transform: translateY(0px)`), completing the jump.
+-->
