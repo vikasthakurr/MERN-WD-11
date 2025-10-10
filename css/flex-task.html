@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .box {
+        border: 1px solid;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 1.75rem;
+        background-color: black;
+        color: white;
+        width: 96%;
+        position: fixed;
+      }
+
+      .nav {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .img {
+        border-radius: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <header class="container">
+        <div class="logo">
+          <img
+            class="img"
+            width="70rem"
+            height="70rem"
+            src="./pic/travel.jpg"
+            alt="logo"
+          />
+        </div>
+        <div class="nav">
+          <a href="./flex_responsiveness.html">Home</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./login.html">Login</a>
+        </div>
+      </header>
+      <div class="container">
+        <div class="box">
+          <img src="./pic/travel.jpg" alt="image" />
+          <div class="content">
+            <p>Site 1</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="./pic/travel.jpg" alt="image" />
+          <div class="content">
+            <p>Site 2</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="./pic/travel.jpg" alt="image" />
+          <div class="content">
+            <p>Site 3</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="./pic/travel.jpg" alt="image" />
+          <div class="content">
+            <p>Site 4</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="./pic/travel.jpg" alt="image" />
+          <div class="content">
+            <p>Site 5</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="./pic/travel.jpg" alt="image" />
+          <div class="content">
+            <p>Site 6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

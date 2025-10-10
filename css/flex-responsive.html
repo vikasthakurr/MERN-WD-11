@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* .parent {
+            background-color: red;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .item {
+            background-color: yellow;
+            padding: 2rem;
+        }
+
+        @media (min-width:767px) {
+            .parent {
+                flex-direction: row;
+            }
+        } */
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 1.75rem;
+        background-color: black;
+        color: white;
+      }
+
+      .nav {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .img {
+        border-radius: 100%;
+      }
+
+      @media (max-width: 676px) {
+        .container {
+          flex-direction: column;
+          /* justify-content: center; */
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .nav {
+          flex-direction: column;
+          /* justify-content: center; */
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div class="parent">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div> -->
+    <div class="container">
+      <div class="logo">
+        <img class="img" width="70rem" height="70rem" src="../../" alt="logo" />
+      </div>
+      <div class="nav">
+        <a href="./flex_responsiveness.html">Home</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./login.html">Login</a>
+      </div>
+    </div>
+  </body>
+</html>

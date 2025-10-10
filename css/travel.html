@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 1.75rem;
+        background-color: black;
+        color: white;
+        width: 96%;
+        position: fixed;
+      }
+
+      .nav {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .img {
+        border-radius: 100%;
+      }
+      .main {
+        background-image: url("./pic/travel.jpg");
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: whitesmoke;
+        font-weight: 600;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="main">
+      <header class="container">
+        <div class="logo">
+          <img
+            class="img"
+            width="70rem"
+            height="70rem"
+            src="./pic/travel.jpg"
+            alt="logo"
+          />
+        </div>
+        <div class="nav">
+          <a href="./flex_responsiveness.html">Home</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./login.html">Login</a>
+        </div>
+      </header>
+      <div class="content">
+        <h1>Welcome to my Travelling blog</h1>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .parent {
+        height: 100vh;
+        background-color: yellow;
+      }
+
+      @media (max-width: 400px) {
+        .parent {
+          background-color: red;
+        }
+      }
+
+      @media (min-width: 401px) and (max-width: 1000px) {
+        .parent {
+          background-color: green;
+        }
+      }
+
+      @media (min-width: 1001px) {
+        .parent {
+          background-color: blue;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="parent"></div>
+  </body>
+</html>

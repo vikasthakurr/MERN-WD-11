@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("./pic/travel.jpg");
+        /* background-image: url('https://www.revnet.ca/wp-content/uploads/2018/02/Travelling-Heres-How-You-Can-Protect-Your-Business-Abroad-1000x450-1-768x346.jpeg'); */
+      }
+
+      .item {
+        background-color: greenyellow;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      @media (max-width: 400px) {
+        .container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
+      @media (min-width: 401px) and (max-width: 900px) {
+        .container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div> -->
+    </div>
+  </body>
+</html>
