@@ -28,7 +28,7 @@
 - CSS Units (px, %, em, rem, vw, vh)
 - Fonts & Text Properties
 - Box Model (padding, margin, border, outline, box-sizing)
-- rothuko painting (Exercise for students)
+- rothko painting (Exercise for students)
 - Backgrounds & Image Filters
 - Flexbox (layout, alignment, gap, wrapping)
 - CSS Grid (rows, columns, gaps, alignment)
