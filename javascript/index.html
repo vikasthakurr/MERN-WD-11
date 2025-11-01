@@ -8,5 +8,17 @@
   </head>
   <body>
     <h1>hello wd-11</h1>
+    <script>
+      function outer() {
+        let a = 10;
+        function inner() {
+          console.log(a);
+        }
+        return inner;
+      }
+      let res = outer();
+      const res1 = res();
+      console.log(res1);
+    </script>
   </body>
 </html>

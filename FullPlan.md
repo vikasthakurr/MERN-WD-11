@@ -61,8 +61,9 @@
 - Single-Threaded Nature & Concurrency
 - Event Loop
 - Installing Node.js & npm
-- Using Browser Console
+- Using Browser Console11
 - Editor Setup & Debugging Basics
+- smallest possible program
 - Memory Management
 - Global Execution Context
 
@@ -71,17 +72,15 @@
 - Variables (var, let, const)
 - Primitive Types
 - Reference Types (objects, arrays, functions)
-- Type Coercion & Comparison (== vs ===)
+- Comparison (== vs ===)
+- Scope & Lexical Environment
+- Scope Chaining
 - Conditional Statements (if/else, switch)
-- Loops (for, while, do…while, for…of, for…in)
-- Arrays & Array Methods
+- Loops (for, while, do…while, for…each(array), for…in(object))
 - Objects
 - Rest & Spread Operators
 - Shallow & Deep Copy
 - Handling Multiple Arguments
-- Functions (definition, invocation)
-- Scope & Lexical Environment
-- Scope Chaining
 - Closures
 - Callback Functions
 - Higher-Order Functions

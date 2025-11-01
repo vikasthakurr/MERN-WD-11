@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memory Leak Demo</title>
+  </head>
+  <body>
+    <h2>Memory Leak Example</h2>
+    <button id="start">Start Leak</button>
+    <button id="stop">Stop Leak</button>
+
+    <script>
+      let leakyArray = [];
+      let intervalId;
+
+      document.getElementById("start").addEventListener("click", () => {
+        intervalId = setInterval(() => {
+          // Keep pushing large data into the array
+          leakyArray.push(new Array(1000000).fill("leak!"));
+
+          console.log("Array size:", leakyArray.length);
+        }, 500);
+      });
+
+      document.getElementById("stop").addEventListener("click", () => {
+        clearInterval(intervalId);
+        console.log("Stopped leaking, but memory is still used.");
+      });
+    </script>
+  </body>
+</html>
