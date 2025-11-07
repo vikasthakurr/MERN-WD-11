@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        padding: 15px 20px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h1>clousure</h1>
+
+    <script>
+      // A closure is a function that has access to its outer function's scope, even after the outer function has returned.
+      // This means a closure can remember and access variables and arguments of its outer function even after the function has finished.
+
+      // 'outer' is the outer function.
+      function outer() {
+        let value = 10; // 'value' is a local variable in the 'outer' function's scope.
+
+        // 'inner' is the inner function, defined inside 'outer'.
+        function inner() {
+          // 'inner' has access to 'value' from its parent's scope. This is closure.
+          console.log(value);
+        }
+        // 'outer' returns the 'inner' function.
+        return inner;
+      }
+      // We call 'outer()' which returns the 'inner' function, and we store it in 'res'.
+      // At this point, 'outer' has finished execution.
+      let res = outer();
+
+      // We call 'res()', which is actually calling 'inner()'.
+      // Even though 'outer()' is done, 'inner()' still has access to the 'value' variable.
+      res();
+    </script> -->
+    <h1>two button problem</h1>
+
+    <button id="red">red</button>
+    <button id="green">green</button>
+
+    <script>
+      // Problem: The code below doesn't work as expected.
+      // When you write `HandleClick("red")`, you are *calling* the function immediately.
+      // The `onclick` property is then assigned the *return value* of `HandleClick`, which is `undefined`.
+      // So, the background color changes once when the page loads, but not when you click the buttons.
+      // document.getElementById("red").onclick = HandleClick("red");
+      // document.getElementById("green").onclick = HandleClick("green");
+
+      // function HandleClick(color) {
+      //   document.body.style.backgroundColor = color;
+      // }
+
+      // Solution with Closures:
+      // We can create a function factory. `makeClickHandler` is a function that returns another function.
+      function makeClickHandler(color) {
+        // This returned function is a closure. It "closes over" the `color` variable.
+        // It remembers the value of `color` that was passed to `makeClickHandler`.
+        return function () {
+          document.body.style.backgroundColor = color;
+        };
+      }
+
+      // Now, we call `makeClickHandler` with "red". It returns a function that knows to set the color to red.
+      // This returned function is assigned to `onclick`. It will be executed only when the button is clicked.
+      document.getElementById("red").onclick = makeClickHandler("red");
+
+      // We do the same for the green button. We get another closure, this one remembering "green".
+      document.getElementById("green").onclick = makeClickHandler("green");
+    </script>
+  </body>
+</html>

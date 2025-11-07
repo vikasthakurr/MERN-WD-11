@@ -53,27 +53,7 @@
 //   2,
 //   3,
 //   4,
-//   5,
-//   6,
-//   7,
-//   8,
-//   9,
-//   9,
-//   0,
-//   0,
-//   6,
-//   5,
-//   4,
-//   3,
-//   56,
-//   7,
-//   89,
-//   4,
-//   32,
-//   2,
-//   46,
-//   778,
-//   8
+//   5
 // );
 // console.log(res);
 // let arr = [1, 2, 3, 4, 5, 6];
@@ -253,7 +233,7 @@
 
 // for...of with objects (not directly iterable)
 // You need to use Object.keys, Object.values, or Object.entries to iterate over objects.
-const myObject = { a: 1, b: 2, c: 3 };
+// const myObject = { a: 1, b: 2, c: 3 };
 
 // Iterate over keys
 // for (const key of Object.keys(myObject)) {
@@ -273,11 +253,52 @@ const myObject = { a: 1, b: 2, c: 3 };
 // 2
 // 3
 
-// Iterate over key-value pairs
-// for (const [key, value] of Object.entries(myObject)) {
-//   console.log(`${key}: ${value}`);
-// }
-// Output:
-// a: 1
-// b: 2
-// c: 3
+//object.freeze
+
+// let obj = {
+//   name: "vikas",
+//   age: 25,
+//   salary: 12345,
+// };
+
+// obj.name = "akash";
+// Object.freeze(obj);
+// obj.name = "avinash";
+// console.log(obj);
+//object.seal
+
+// let obj = {
+//   name: "vikas",
+//   age: 25,
+//   salary: 12345,
+// };
+// obj.name = "akash";
+// Object.seal(obj);
+// obj.name = "avinash";
+// obj.address = "delhi";
+// console.log(obj);
+
+//shallow copy using spread...
+let obj = {
+  name: "vikas",
+  age: 25,
+  salary: 12345,
+  address: {
+    town: "etawah",
+    state: "up",
+  },
+};
+
+// let obj1 = obj;
+// let obj1 = { ...obj };
+// let obj1 = structuredClone(obj);
+// let obj1 = JSON.stringify(obj);
+// let obj2 = JSON.parse(obj1);
+// console.log(obj2);
+
+// let obj1 = JSON.parse(JSON.stringify(obj));
+// console.log(typeof obj1);
+// // obj1.name = "akash";
+// // obj1.address.town = "kanpur";
+// // console.log(obj);
+// // console.log(obj1);
