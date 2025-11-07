@@ -79,15 +79,16 @@
 - Loops (for, while, do…while, for…each(array), for…in(object))
 - Objects
 - Rest & Spread Operators
-- Shallow & Deep Copy
 - Handling Multiple Arguments
+- Freezing objects, sealing objects
+- Shallow & Deep Copy
 - Closures
 - Callback Functions
+- Currying
 - Higher-Order Functions
 - map, filter, reduce
 - Array.prototype basics
 - IIFE (Immediately Invoked Function Expression)
-- Currying
 
 ### JavaScript (Advanced Concepts)
 
