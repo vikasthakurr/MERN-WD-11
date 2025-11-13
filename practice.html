@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>callback practice</h1>
+    <script>
+      function makeSandwich(bread, cb) {
+        setTimeout(() => {
+          console.log("Making the bread" + bread);
+          //   cb();
+        }, 2000);
+      }
+
+      function applySauce(sauce, cb) {
+        setTimeout(() => {
+          console.log("applying the sauce" + sauce);
+          cb();
+        }, 3000);
+      }
+
+      function stuffing(stuff, cb) {
+        setTimeout(() => {
+          console.log("stuffing is done with" + stuff);
+          cb();
+        }, 4000);
+      }
+
+      function grilled(temp, cb) {
+        setTimeout(() => {
+          console.log("grilling is done at temp" + temp);
+          cb();
+        }, 5000);
+      }
+
+      function serving(plate, cb) {
+        setTimeout(() => {
+          console.log("serving of  plate of " + plate);
+          cb();
+        }, 6000);
+      }
+
+      makeSandwich("brown bread", () => {
+        applySauce("mayo", () => {
+          stuffing("panner", () => {
+            grilled("high", () => {
+              serving("bamboo", () => {
+                console.log("your process is completed");
+              });
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

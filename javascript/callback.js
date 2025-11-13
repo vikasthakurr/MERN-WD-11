@@ -62,19 +62,89 @@ function serve(cb) {
 // This pattern of deeply nested callbacks is often called "Callback Hell" or the "Pyramid of Doom".
 // It can make the code hard to read, understand, and maintain because the code indents deeper
 // with each new asynchronous action.
-makeMaggi("yupee", () => {
-  // This is the callback for makeMaggi. It calls waterBoil.
-  waterBoil(() => {
-    // This is the callback for waterBoil. It calls addMaggi.
-    addMaggi(() => {
-      // This is the callback for addMaggi. It calls serve.
-      serve(() => {
-        // This is the final callback after the Maggi is served.
-        console.log("all process are done ");
-      });
-    });
-  });
-});
+// makeMaggi("yupee", () => {
+//   // This is the callback for makeMaggi. It calls waterBoil.
+//   waterBoil(() => {
+//     // This is the callback for waterBoil. It calls addMaggi.
+//     addMaggi(() => {
+//       // This is the callback for addMaggi. It calls serve.
+//       serve(() => {
+//         // This is the final callback after the Maggi is served.
+//         console.log("all process are done ");
+//       });
+//     });
+//   });
+// });
 
 // In modern JavaScript, problems like "Callback Hell" are often solved using Promises and async/await,
 // which allow for writing asynchronous code that looks more like synchronous code and is easier to read and reason about.
+
+function greet(name, cb) {
+  console.log(`Hi good morning ${name}`);
+  cb();
+}
+
+function How() {
+  console.log("how are you");
+}
+
+// greet("vikas", How);
+
+//settimeout
+// setTimeout(() => {
+//   console.log("hii");
+// }, 3000);
+
+//you have to make a sandwich operation using callback and delay and each process will take increasing order of time
+function makeSandwich(bread, cb) {
+  setTimeout(() => {
+    console.log("Making the bread" + bread);
+    // cb();
+  }, 2000);
+}
+
+function applySauce(sauce, cb) {
+  setTimeout(() => {
+    console.log("applying the sauce" + sauce);
+    cb();
+  }, 3000);
+}
+
+function stuffing(stuff, cb) {
+  setTimeout(() => {
+    console.log("stuffing is done with" + stuff);
+    cb();
+  }, 4000);
+}
+
+function grilled(temp, cb) {
+  setTimeout(() => {
+    console.log("grilling is done at temp" + temp);
+    cb();
+  }, 5000);
+}
+
+function serving(plate, cb) {
+  setTimeout(() => {
+    console.log("serving of  plate of " + plate);
+    cb();
+  }, 6000);
+}
+
+// makeSandwich("brown bread", () => {
+//   applySauce("mayo", () => {
+//     stuffing("panner", () => {
+//       grilled("high", () => {
+//         serving("bamboo", () => {
+//           console.log("your process is completed");
+//         });
+//       });
+//     });
+//   });
+// });
+
+function fetchData() {
+  const response = fetch("https://dummyjson.com/products");
+  console.log(response);
+}
+fetchData();
