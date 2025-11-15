@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>promise</h1>
+
+    <script>
+      //   let response = fetch("https://dummyjson.com/products");
+      //   console.log(response);
+      let promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject("error");
+        }, 2000);
+      });
+      console.log(promise1);
+    </script>
+  </body>
+</html>
