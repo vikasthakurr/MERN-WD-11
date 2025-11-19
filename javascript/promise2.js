@@ -1,7 +1,4 @@
-/*
-
-
-  What is a Promise?
+/*What is a Promise?
   ------------------
   A Promise is a special JavaScript object that acts as a placeholder for a value that will be available in the future. 
   It represents the eventual completion (or failure) of an asynchronous operation and its resulting value.

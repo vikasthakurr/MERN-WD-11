@@ -105,10 +105,6 @@
 - Handling API Responses & Destructuring
 - Async/Await
 - `this` Keyword
-- call, apply, bind
-- JavaScript Engine Basics
-- Local & Session Storage
-- Debouncing & Throttling
 
 ## Part 2: ReactJS (Frontend Framework)
 
@@ -118,14 +114,11 @@
 - Setting up React with Vite
 - First React App
 - Components
-- List and Keys in react
 - Event Handlers
-- Two Way Binding
 - State in React
 - useState Hook
 - Props (passing data)
 - Props Drilling
-- State Uplifting
 - useEffect Hook
 - useRef Hook
 - useMemo Hook
@@ -134,8 +127,6 @@
 - Custom Hooks
 - useContext & Context API
 - Redux (Global State Management)
-- React Query (Optional)
-- Routing Concepts (Server vs Client)
 - React Router DOM
 - Link vs Anchor
 - Nested Routes & Params
@@ -145,21 +136,7 @@
 - Tailwind CSS Basics & Demo
 - Tailwind Setup in React
 - Project: Travel Website
-- Shimmer UI (loading skeletons)
-- Form Handling with Formik
 
-### React Data & Performance
-
-- Axios vs Fetch (API calls)
-- Error Handling in API Calls
-- Performance Optimization
-- React Suspense & Lazy Loading
-- Error Boundaries
-
-### Testing & Deployment (Frontend)
-
-- Testing with Jest & React Testing Library
-- Deployment (Netlify, Vercel, GitHub Pages)
 
 ### Module 1: Getting Started with Node.js
 
@@ -171,12 +148,8 @@
 
 ### Module 2: Node.js Core Modules
 
-- Globals (`__dirname`, `__filename`, `require`, `module.exports`)
 - CommonJS vs ES Modules
 - File System (`fs`)
-- Path, OS modules
-- Events & EventEmitter
-- Streams & Buffers
 
 ### Module 3: HTTP & Core Server
 
