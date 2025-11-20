@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .color {
+        color: red;
+        font-size: 50px;
+        font-style: italic;
+      }
+      .circle {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h1>this is heading 1</h1>
+    <h1>this is heading 2</h1>
+    <h2 id="byid">this is heading 3</h2>
+    <p class="byclass">this is paragraph</p>
+    <p class="byclass">this is paragraph</p> -->
+
+    <div class="container">
+      <p>this is para 1</p>
+      <p>this is pra 2</p>
+    </div>
+
+    <script>
+      // What is BOM vs DOM?
+
+      // BOM (Browser Object Model):
+      // - The BOM represents the browser window and provides objects that interact with the browser itself.
+      // - It's not a strict standard, so it can vary between browsers.
+      // - The top-level object is `window`. All global JavaScript objects, functions, and variables
+      //   automatically become members of the window object.
+      // - Key objects in BOM:
+      //   - `window`: The browser window.
+      //   - `navigator`: Information about the browser (name, version, etc.).
+      //   - `screen`: Information about the user's screen (width, height, etc.).
+      //   - `location`: The current URL of the page. Used for redirection.
+      //   - `history`: The browser's history (back, forward).
+
+      // DOM (Document Object Model):
+      // - The DOM represents the loaded HTML document as a tree-like structure of objects (nodes).
+      // - It is a W3C (World Wide Web Consortium) standard for accessing and manipulating documents.
+      // - The `document` object is the main entry point to the page's content.
+      // - With the DOM, JavaScript can:
+      //   - Change/add/remove HTML elements and attributes.
+      //   - Change CSS styles.
+      //   - React to user events (like clicks, keypresses).
+      //   - Create new elements and insert them into the page.
+
+      // DOM Selectors: These are methods to find and select HTML elements from the document.
+
+      // 1. getElementsByTagName: Selects all elements with a given tag name.
+      // Returns an HTMLCollection, which is a live collection of elements.
+      //   let res = document.getElementsByTagName("h1");
+
+      // 2. getElementById: Selects a single element by its unique ID.
+      // Returns the element object if found, otherwise null.
+      //   let res = document.getElementById("byid");
+
+      // 3. getElementsByClassName: Selects all elements that have a given class name.
+      // Returns an HTMLCollection.
+      //   let res = document.getElementsByClassName("byclass");
+
+      // 4. querySelectorAll: Selects all elements that match a specified CSS selector(s).
+      // Returns a static NodeList, which is not live.
+      //   let res = document.querySelectorAll(".byclass");
+
+      //   console.log(res); // Displays the selected element(s) in the console.
+
+      // Creating and Appending Elements: How to create new HTML elements and add them to the DOM.
+
+      // Create a new <span> element.
+      //   const span = document.createElement("span");
+      // Set the text content of the span.
+      //   span.innerText = "this is span";
+      // Add a CSS class 'color' to the span for styling.
+      //   span.classList.add("color");
+      //   console.log(span); // Log the created span element to the console.
+      // Append the span as a child to the <body> of the document.
+      //   document.body.appendChild(span);
+
+      // Create a new <div> element.
+      //   const div = document.createElement("div");
+      // Add a CSS class 'circle' to the div.
+      //   div.classList.add("circle");
+      // Append the div to the body.
+      //   document.body.appendChild(div);
+
+      // Create a new <img> element.
+      //   let img = document.createElement("img");
+      // Set the 'src' attribute to specify the image URL.
+      //   img.setAttribute(
+      //     "src",
+      //     "https://images.pexels.com/photos/18232621/pexels-photo-1823262"
+      //   );
+      // Set the 'alt' attribute for accessibility.
+      //   img.setAttribute("alt", "image");
+      // Apply inline styles to set the width and height of the image.
+      //   img.style.width = "400px";
+      //   img.style.height = "400px";
+      // Append the image to the body.
+      //   document.body.appendChild(img);
+
+      // Accessing Child Elements: How to get the children of a specific element.
+
+      // Select the first element with the class 'container'.
+      let container = document.querySelector(".container");
+      // The 'children' property returns a live HTMLCollection of the child elements.
+      console.log(container.children);
+    </script>
+  </body>
+</html>

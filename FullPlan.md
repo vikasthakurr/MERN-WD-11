@@ -105,6 +105,7 @@
 - Handling API Responses & Destructuring
 - Async/Await
 - `this` Keyword
+- call, apply and bind
 
 ## Part 2: ReactJS (Frontend Framework)
 
@@ -136,7 +137,6 @@
 - Tailwind CSS Basics & Demo
 - Tailwind Setup in React
 - Project: Travel Website
-
 
 ### Module 1: Getting Started with Node.js
 
