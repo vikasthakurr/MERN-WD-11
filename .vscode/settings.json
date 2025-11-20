@@ -7,6 +7,9 @@
     "etawah",
     "keypresses",
     "promoise",
-    "secondcontainer"
+    "secondcontainer",
+    "shapecolor",
+    "shapename",
+    "shapequantity"
   ]
 }

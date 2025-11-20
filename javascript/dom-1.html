@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shape Generator</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .controls {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 860px;
+        box-sizing: border-box;
+      }
+
+      #quantity {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      #generate {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      #generate:hover {
+        background-color: #0056b3;
+      }
+
+      .container {
+        background-color: #fff;
+        width: 100%;
+        max-width: 900px;
+        min-height: 600px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-content: flex-start;
+        box-sizing: border-box;
+      }
+
+      .circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .circle:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <input
+        type="number"
+        name="quantity"
+        id="quantity"
+        placeholder="Enter how many shapes you want"
+        min="1"
+      />
+      <button id="generate">Generate</button>
+    </div>
+    <div class="container"></div>
+
+    <script>
+      const generate = document.querySelector("#generate");
+
+      generate.addEventListener("click", () => {
+        const quantityInput = document.querySelector("#quantity");
+        const quantity = quantityInput.value;
+        const container = document.querySelector(".container");
+
+        // Clear previous shapes
+        container.innerHTML = "";
+
+        if (quantity > 0) {
+          for (let i = 0; i < quantity; i++) {
+            let shape = document.createElement("div");
+            shape.classList.add("circle");
+            container.appendChild(shape);
+          }
+        }
+        // Optional: Clear the input after generating
+        quantityInput.value = "";
+      });
+    </script>
+  </body>
+</html>

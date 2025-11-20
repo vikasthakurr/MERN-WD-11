@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub User Finder</title>
+    <style>
+      :root {
+        --bg-color: #f0f2f5;
+        --card-bg-color: #ffffff;
+        --text-color: #333;
+        --primary-color: #007bff;
+        --primary-hover-color: #0056b3;
+        --border-color: #ddd;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 1.5rem;
+      }
+
+      .search-form {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      #username-input {
+        flex-grow: 1;
+        font-size: 1rem;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+      }
+
+      #find-btn {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      #find-btn:hover {
+        background-color: var(--primary-hover-color);
+      }
+
+      .profile-card {
+        background-color: var(--card-bg-color);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .profile-card.show {
+        display: flex;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid var(--primary-color);
+      }
+
+      .user-info h2 {
+        margin: 0;
+        font-size: 1.75rem;
+      }
+
+      .user-info a {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .user-info a:hover {
+        text-decoration: underline;
+      }
+
+      .bio {
+        font-size: 1rem;
+        color: #666;
+      }
+
+      .stats {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat .value {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .stat .label {
+        font-size: 0.8rem;
+        color: #777;
+      }
+      
+      .message {
+          margin-top: 1rem;
+          font-size: 1rem;
+          font-weight: 500;
+      }
+
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--primary-color);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        display: none; /* Hidden by default */
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>GitHub User Finder</h1>
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          id="username-input"
+          placeholder="Enter a GitHub username"
+          required
+        />
+        <button type="submit" id="find-btn">Find</button>
+      </form>
+
+      <div class="loader" id="loader"></div>
+      <div class="message" id="message"></div>
+      <div class="profile-card" id="profile-card"></div>
+    </div>
+
+    <script>
+      const form = document.getElementById("search-form");
+      const usernameInput = document.getElementById("username-input");
+      const loader = document.getElementById("loader");
+      const messageEl = document.getElementById("message");
+      const profileCard = document.getElementById("profile-card");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const username = usernameInput.value.trim();
+
+        if (!username) return;
+
+        // Reset UI
+        profileCard.classList.remove("show");
+        messageEl.textContent = "";
+        loader.style.display = "block";
+
+        try {
+          const response = await fetch(`https://api.github.com/users/${username}`);
+
+          if (!response.ok) {
+            throw new Error(response.status === 404 ? "User not found" : "Something went wrong");
+          }
+
+          const data = await response.json();
+          displayProfile(data);
+        } catch (err) {
+          displayMessage(err.message);
+        } finally {
+          loader.style.display = "none";
+        }
+      });
+
+      function displayProfile(data) {
+        profileCard.innerHTML = `
+          <img src="${data.avatar_url}" alt="${data.login}" class="avatar">
+          <div class="user-info">
+            <h2>${data.name || data.login}</h2>
+            <a href="${data.html_url}" target="_blank">@${data.login}</a>
+          </div>
+          <p class="bio">${data.bio || "No bio available."}</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="value">${data.followers}</span>
+              <span class="label">Followers</span>
+            </div>
+            <div class="stat">
+              <span class="value">${data.following}</span>
+              <span class="label">Following</span>
+            </div>
+            <div class="stat">
+              <span class="value">${data.public_repos}</span>
+              <span class="label">Repositories</span>
+            </div>
+          </div>
+        `;
+        profileCard.classList.add("show");
+      }
+
+      function displayMessage(message) {
+        messageEl.textContent = message;
+      }
+    </script>
+  </body>
+</html>
