@@ -106,6 +106,7 @@
 - Async/Await
 - `this` Keyword
 - call, apply and bind
+- debounce and throttle
 
 ## Part 2: ReactJS (Frontend Framework)
 
