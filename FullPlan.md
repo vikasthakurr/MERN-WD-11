@@ -119,15 +119,15 @@
 - Event Handlers
 - State in React
 - useState Hook
-- Props (passing data)
+- Props (passing data)c
 - Props Drilling
 - useEffect Hook
 - useRef Hook
+- useContext & Context API
 - useMemo Hook
 - useCallback Hook
 - React.memo (optimization)
 - Custom Hooks
-- useContext & Context API
 - Redux (Global State Management)
 - React Router DOM
 - Link vs Anchor
