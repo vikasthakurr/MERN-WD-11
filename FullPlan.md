@@ -128,6 +128,7 @@
 - useCallback Hook
 - React.memo (optimization)
 - Custom Hooks
+- conditional rendering
 - Redux (Global State Management)
 - React Router DOM
 - Link vs Anchor
