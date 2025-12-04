@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useMemo } from "react";
 import Child from "./Child";
+import { useCallback } from "react";
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -16,9 +17,12 @@ const App = () => {
     }
     return sum;
   }
-  function sayHi() {
-    console.log("hi");
-  }
+  const sayHi = useCallback(() => {
+    console.log("hii");
+  }, []);
+  // const sayHi2 = () => {
+  //   console.log("hii2");
+  // };
   // const res = sum();
   const res = useMemo(() => sum(), []);
   return (
@@ -34,7 +38,7 @@ const App = () => {
 
       <br></br>
       <br></br>
-      <Child count1={count1} sayHi={sayHi} />
+      <Child count1={count1} sayHi={sayHi}  />
     </div>
   );
 };
