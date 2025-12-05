@@ -11,5 +11,6 @@
     "shapecolor",
     "shapename",
     "shapequantity"
-  ]
+  ],
+  "files.autoSave": "afterDelay"
 }
