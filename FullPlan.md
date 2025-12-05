@@ -129,10 +129,12 @@
 - React.memo (optimization)
 - Custom Hooks
 - conditional rendering
-- Redux (Global State Management)
 - React Router DOM
 - Link vs Anchor
 - Nested Routes & Params
+- Skelton UI
+- Lazy and Suspense
+- Redux (Global State Management)
 
 ### React UI & Styling
 

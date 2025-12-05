@@ -1,10 +1,20 @@
-import React from "react";
-import Dashbord from "./Dashbord";
+import React from 'react'
+import { Suspense } from 'react'
+
+const Card = React.lazy(()=>import('./component/Card'))
+const Home = React.lazy(()=>import('./component/Home'))
 
 const App = () => {
-  // let username = "vikas"
-  let isLoggedIn = true;
-  return <div>{isLoggedIn ? <Dashbord /> : "please login first"}</div>;
-};
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Card />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Home />
+      </Suspense>
+    </div>
+  )
+}
 
-export default App;
+export default App 
