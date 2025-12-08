@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>abort controller panel</h1>
+
+    <button id="start">Start api Call</button>
+    <button id="stop">Stop api Call</button>
+
+    <p id="status"></p>
+
+    <script>
+      let controller;
+      let timeoutId;
+
+      document.getElementById("start").addEventListener("click", () => {
+        controller = new AbortController();
+
+        const signal = controller.signal;
+        const status = document.getElementById("status");
+        status.textContent = "Fetching the data please wait....";
+
+        fetch("https://jsonplaceholder.typicode.com/todos/1", { signal })
+          .then((response) => response.json())
+          .then((data) => {
+            timeoutId = setTimeout(() => {
+              status.textContent = JSON.stringify(data, null, 2);
+            }, 5000);
+          })
+          .catch((err) => {
+            if (err.name == "AbortError") {
+              clearTimeout(timeoutId);
+              status.textContent = "fetch requested is  Aborted";
+            } else {
+              status.textContent = err.message;
+            }
+          });
+      });
+      document.getElementById("stop").addEventListener("click", () => {
+        if (controller) {
+          controller.abort();
+        }
+        clearTimeout(timeoutId);
+        document.getElementById("status").textContent =
+          "fetch requested is  Aborted";
+      });
+    </script>
+    <!-- <script>
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+      setTimeout(function timeout() {
+        console.log("Click the button!");
+      }, 5000);
+      setTimeout(function timeout() {
+        console.log("Click the button!");
+      }, 5000);
+
+      setTimeout(function timeout() {
+        console.log("Click the button!");
+      }, 5000);
+
+      console.log("Welcome to loupe.");
+    </script> -->
+  </body>
+</html>
