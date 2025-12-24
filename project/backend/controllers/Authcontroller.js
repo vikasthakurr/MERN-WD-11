@@ -32,23 +32,59 @@ Authcontroller.post("/register", async (req, res) => {
 });
 
 //login
-
 Authcontroller.post("/login", async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
 
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "user not found" });
-
+    //password matching...
     const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
 
-    if (!isMatch) return res.status(400).json({ message: "invalid password" });
-    res.status(200).json({ message: "welcome to home page", user });
+    //else assign jwt token....
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
+    );
+
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
 //update route
+Authcontroller.put("/profile", async (req, res) => {
+  try {
+    const { username, email } = req.body; // email is used to find the user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    user.username = username;
+    await user.save();
+    res.status(200).json({
+      message: "Profile updated successfully",
+      user: { id: user._id, username: user.username, email: user.email },
+    });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 export default Authcontroller;
