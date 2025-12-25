@@ -5,6 +5,7 @@ import path from "path";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import sendMail from "./mailController.js";
 import dotenv from "dotenv";
 import User from "../Schema/User.js";
 dotenv.config();
@@ -15,6 +16,8 @@ const Authcontroller = express();
 Authcontroller.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
+
+//  TODO use multer from dp upload profile pic
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(400).json({ message: "Email already exists" });
@@ -52,6 +55,11 @@ Authcontroller.post("/login", async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
     );
 
+    //send mail...
+    const subject = "Login Notification";
+    const text = `Hi ${user.username},\n\nThis is a notification that your account was just accessed. If this was you, you can safely ignore this email.`;
+    await sendMail({ to: user.email, subject, text });
+
     res.status(200).json({
       message: "Login successful",
       token,
@@ -66,6 +74,29 @@ Authcontroller.post("/login", async (req, res) => {
   }
 });
 
+const verifyToken = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader)
+    return res.status(401).json({ message: "Authorization header missing" });
+
+  const token = authHeader.split(" ")[1];
+  if (!token) return res.status(401).json({ message: "Token missing" });
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: "Invalid token" });
+    req.user = user;
+    next();
+  });
+};
+
+Authcontroller.get("/profiles", verifyToken, async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 //update route
 Authcontroller.put("/profile", async (req, res) => {
   try {
