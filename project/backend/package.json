@@ -19,6 +19,7 @@
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.0.2"
+    "mongoose": "^9.0.2",
+    "nodemailer": "^7.0.12"
   }
 }

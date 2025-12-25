@@ -7,7 +7,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../Schema/User.js";
-import { error } from "console";
 dotenv.config();
 
 const Authcontroller = express();
