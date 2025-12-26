@@ -7,22 +7,22 @@ import {
 } from "../redux/reducer/cartSlice.js";
 // import products from "../product-api/product.js";
 
-const Card = ({ products, onQuickView }) => {
-  // Prevent rendering if product is not passed, to avoid crashes.
-  if (!products) {
-    return null;
-  }
-
+const Card = ({ product, onQuickView }) => {
   const dispatch = useDispatch();
   const productInCart = useSelector((state) =>
-    state.cart.find((item) => item && item.id === products.id)
+    state.cart.find((item) => item && product && item.id === product.id)
   );
+
+  // Prevent rendering if product is not passed, to avoid crashes.
+  if (!product) {
+    return null;
+  }
 
   const quantity = productInCart?.quantity || 0;
 
   const discountedPrice = (
-    products.price -
-    (products.price * products.discountPercentage) / 100
+    product.price -
+    (product.price * product.discountPercentage) / 100
   ).toFixed(2);
 
   const renderStars = (rating) => {
@@ -49,15 +49,15 @@ const Card = ({ products, onQuickView }) => {
       <figure className="relative w-full h-48 overflow-hidden">
         <img
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-          src={products.thumbnail}
-          alt={products.title}
+          src={product.thumbnail}
+          alt={product.title}
         />
         <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-          {products.discountPercentage.toFixed(0)}% OFF
+          {product.discountPercentage.toFixed(0)}% OFF
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <button
-            onClick={() => onQuickView(products)}
+            onClick={() => onQuickView(product)}
             className="bg-white text-gray-800 px-4 py-2 rounded-lg font-bold"
           >
             Quick View
@@ -67,7 +67,7 @@ const Card = ({ products, onQuickView }) => {
       <div className="p-4 flex flex-col grow">
         <h2
           className="text-lg font-semibold text-gray-800 truncate"
-          title={products.title}
+          title={product.title}
         >
           {product.title}
         </h2>

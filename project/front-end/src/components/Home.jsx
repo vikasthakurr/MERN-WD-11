@@ -132,7 +132,7 @@ const Home = () => {
             }`}
           >
             {filteredProducts.map((product) => (
-              <Card key={product.id} productObj={product} />
+              <Card key={product.id} product={product} />
             ))}
           </div>
         ) : (

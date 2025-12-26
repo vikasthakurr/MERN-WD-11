@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, ShoppingCart, User, Home } from "lucide-react";
+import {
+  Search,
+  ShoppingCart,
+  User,
+  Home,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [searchFocus, setSearchFocus] = useState(false);
+  const cart = useSelector((state) => state.cart);
+  // const total = cart.reduce((acc, item) => acc + item.price, 0);
+  const quantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <nav className="bg-white/80 backdrop-blur-md border-b border-cyan-100 shadow-sm sticky top-0 z-50">
@@ -58,7 +69,16 @@ const Navbar = () => {
               className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
             >
               <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-              <span className="font-medium">Cart</span>
+              <span className="font-medium">
+                Cart
+                {quantity > 0 ? (
+                  <span className="ml-1 text-xs bg-cyan-500 text-white px-2 py-1 rounded-full">
+                    {quantity}
+                  </span>
+                ) : (
+                  ""
+                )}
+              </span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
@@ -68,6 +88,24 @@ const Navbar = () => {
             >
               <User className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               <span className="font-medium">Profile</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+
+            <Link
+              to="/login"
+              className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
+            >
+              <LogIn className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+              <span className="font-medium">Login</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+
+            <Link
+              to="/signup"
+              className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
+            >
+              <UserPlus className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+              <span className="font-medium">Signup</span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
           </div>
