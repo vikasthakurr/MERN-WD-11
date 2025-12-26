@@ -17,7 +17,7 @@ Authcontroller.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-//  TODO use multer from dp upload profile pic
+    //  TODO use multer from dp upload profile pic
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(400).json({ message: "Email already exists" });
@@ -62,12 +62,6 @@ Authcontroller.post("/login", async (req, res) => {
 
     res.status(200).json({
       message: "Login successful",
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
     });
   } catch (err) {
     res.status(500).json({ message: err.message });

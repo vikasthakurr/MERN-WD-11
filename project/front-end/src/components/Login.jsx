@@ -15,10 +15,10 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const response = axios.post(
+      const response = await axios.post(
         "http://localhost:3000/api/auth/login",
         formData
       );
