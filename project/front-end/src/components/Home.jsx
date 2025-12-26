@@ -10,14 +10,14 @@ const Home = () => {
   // Get unique categories
   const categories = [
     "all",
-    ...new Set(products.map((product) => product.category)),
+    ...new Set(products.map((products) => products.category)),
   ];
 
   // Filter products based on selected category
   const filteredProducts =
     selectedCategory === "all"
       ? products
-      : products.filter((product) => product.category === selectedCategory);
+      : products.filter((products) => products.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -132,7 +132,7 @@ const Home = () => {
             }`}
           >
             {filteredProducts.map((product) => (
-              <Card key={product.id} product={product} />
+              <Card key={product.id} productObj={product} />
             ))}
           </div>
         ) : (
