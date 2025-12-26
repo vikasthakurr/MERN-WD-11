@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Lock, ArrowRight } from "lucide-react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,7 +17,18 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login Data:", formData);
+    try {
+      const response = axios.post(
+        "http://localhost:3000/api/auth/login",
+        formData
+      );
+      if (!response) return alert("Invalid credentials");
+      alert("User logged in successfully");
+      navigate("/");
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

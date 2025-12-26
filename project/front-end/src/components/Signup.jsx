@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { User, Mail, Lock, ArrowRight } from "lucide-react";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -15,19 +15,24 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:3000/api/auth/register",
-  //       formData
-  //     );
-  //     alert("User registered successfully");
-  //     navigate("/login");
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/register",
+        formData
+      );
+      alert("User registered successfully");
+      navigate("/login");
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const handleSubmit = () => {
+  //   alert("User registered successfully");
+  //   navigate("/login");
   // };
 
   return (
