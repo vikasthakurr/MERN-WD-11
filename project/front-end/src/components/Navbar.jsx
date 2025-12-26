@@ -9,12 +9,15 @@ import {
   UserPlus,
 } from "lucide-react";
 import { useSelector } from "react-redux";
+import { useSearch } from "../context/SearchContext";
 
 const Navbar = () => {
   const [searchFocus, setSearchFocus] = useState(false);
   const cart = useSelector((state) => state.cart);
   // const total = cart.reduce((acc, item) => acc + item.price, 0);
   const quantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  const { search, setSearch } = useSearch();
 
   return (
     <nav className="bg-white/80 backdrop-blur-md border-b border-cyan-100 shadow-sm sticky top-0 z-50">
@@ -44,6 +47,8 @@ const Navbar = () => {
                 />
               </div>
               <input
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
                 type="text"
                 placeholder="Search products..."
                 onFocus={() => setSearchFocus(true)}

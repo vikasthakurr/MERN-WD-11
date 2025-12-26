@@ -15,7 +15,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -23,6 +23,11 @@ const Login = () => {
         formData
       );
       if (!response) return alert("Invalid credentials");
+
+      // Store token and user data
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
       alert("User logged in successfully");
       navigate("/");
       console.log(response.data);

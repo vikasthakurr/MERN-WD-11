@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Card from "./Card";
 import products from "../product-api/product";
 import { Filter, Grid3x3, LayoutGrid } from "lucide-react";
+import { useSearch } from "../context/SearchContext";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [gridColumns, setGridColumns] = useState(3);
+  const { search } = useSearch();
 
   // Get unique categories
   const categories = [
@@ -18,6 +20,11 @@ const Home = () => {
     selectedCategory === "all"
       ? products
       : products.filter((products) => products.category === selectedCategory);
+
+  // Filter products based on search query
+  const filteredProductsBySearch = filteredProducts.filter((products) =>
+    products.title?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -36,7 +43,7 @@ const Home = () => {
             <div className="flex items-center justify-center space-x-3 pt-4">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-cyan-400"></div>
               <span className="text-sm font-semibold text-cyan-600 bg-cyan-50 px-3 py-1 rounded-full border border-cyan-100">
-                {filteredProducts.length} Current Products
+                {filteredProductsBySearch.length} Current Products
               </span>
               <div className="h-px w-16 bg-linear-to-r from-fuchsia-400 to-transparent"></div>
             </div>
@@ -121,7 +128,7 @@ const Home = () => {
 
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {filteredProducts.length > 0 ? (
+        {filteredProductsBySearch.length > 0 ? (
           <div
             className={`grid gap-8 ${
               gridColumns === 2
@@ -131,7 +138,7 @@ const Home = () => {
                 : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             }`}
           >
-            {filteredProducts.map((product) => (
+            {filteredProductsBySearch.map((product) => (
               <Card key={product.id} product={product} />
             ))}
           </div>

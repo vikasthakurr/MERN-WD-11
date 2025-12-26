@@ -62,6 +62,12 @@ Authcontroller.post("/login", async (req, res) => {
 
     res.status(200).json({
       message: "Login successful",
+      token,
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+      },
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -91,11 +97,22 @@ Authcontroller.get("/profiles", verifyToken, async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-//update route
-Authcontroller.put("/profile", async (req, res) => {
+Authcontroller.get("/profile", verifyToken, async (req, res) => {
   try {
-    const { username, email } = req.body; // email is used to find the user
-    const user = await User.findOne({ email });
+    const user = await User.findById(req.user.id).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+//update route
+Authcontroller.put("/profile", verifyToken, async (req, res) => {
+  try {
+    const { username } = req.body;
+    const user = await User.findById(req.user.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
