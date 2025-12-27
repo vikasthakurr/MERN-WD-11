@@ -15,7 +15,7 @@ const Authcontroller = express();
 // Register
 Authcontroller.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     //  TODO use multer from dp upload profile pic
     const existingUser = await User.findOne({ email });
@@ -24,7 +24,12 @@ Authcontroller.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({ username, email, password: hashedPassword });
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+      role: role || "user",
+    });
     await newUser.save();
 
     res.status(201).json({ message: "User registered successfully" });
@@ -67,6 +72,7 @@ Authcontroller.post("/login", async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        role: user.role,
       },
     });
   } catch (err) {
@@ -120,7 +126,12 @@ Authcontroller.put("/profile", verifyToken, async (req, res) => {
     await user.save();
     res.status(200).json({
       message: "Profile updated successfully",
-      user: { id: user._id, username: user.username, email: user.email },
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (error) {
     console.error("Error updating profile:", error);

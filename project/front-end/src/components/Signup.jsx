@@ -9,6 +9,7 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    role: "user",
   });
 
   const handleChange = (e) => {
@@ -25,8 +26,13 @@ const Signup = () => {
       alert("User registered successfully");
       navigate("/login");
       console.log(response.data);
+      console.log(response.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      alert(
+        error.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
     }
   };
 
@@ -92,6 +98,21 @@ const Signup = () => {
                 value={formData.password}
                 onChange={handleChange}
               />
+            </div>
+
+            <div className="relative group">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Select Role
+              </label>
+              <select
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all text-gray-700"
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
 
             <button

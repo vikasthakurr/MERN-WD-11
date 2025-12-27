@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,8 +27,10 @@ const Login = () => {
       if (!response) return alert("Invalid credentials");
 
       // Store token and user data
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+      // localStorage.setItem("token", response.data.token);
+      // localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      login(response.data.user, response.data.token);
 
       alert("User logged in successfully");
       navigate("/");

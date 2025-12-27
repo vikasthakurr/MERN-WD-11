@@ -128,9 +128,6 @@ const Home = () => {
 
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {" "}
-        setIsLoggedIn(true); setUser(userData);
-        localStorage.setItem("isAuthenticated", "true");
         {filteredProductsBySearch.length > 0 ? (
           <div
             className={`grid gap-8 ${

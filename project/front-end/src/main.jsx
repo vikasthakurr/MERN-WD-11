@@ -9,14 +9,16 @@ import store from "./redux/store/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store/store.js";
 import { SearchProvider } from "./context/SearchContext.jsx";
-// import { AuthProvider } from "./context/AuthContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate persistor={persistor} loading={null}>
-      <SearchProvider>
-        <App />
-      </SearchProvider>
+      <AuthProvider>
+        <SearchProvider>
+          <App />
+        </SearchProvider>
+      </AuthProvider>
     </PersistGate>
   </Provider>
 );

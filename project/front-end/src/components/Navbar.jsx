@@ -7,9 +7,11 @@ import {
   Home,
   LogIn,
   UserPlus,
+  LogOut,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useSearch } from "../context/SearchContext";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const [searchFocus, setSearchFocus] = useState(false);
@@ -18,6 +20,7 @@ const Navbar = () => {
   const quantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const { search, setSearch } = useSearch();
+  const { user, logout } = useAuth();
 
   return (
     <nav className="bg-white/80 backdrop-blur-md border-b border-cyan-100 shadow-sm sticky top-0 z-50">
@@ -87,32 +90,62 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
-            <Link
-              to="/profile"
-              className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
-            >
-              <User className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-              <span className="font-medium">Profile</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
+            {user ? (
+              <div className="flex items-center space-x-6">
+                <Link
+                  to="/profile"
+                  className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
+                >
+                  <User className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-medium">
+                    Welcome, {user.username || "User"}
+                  </span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
 
-            <Link
-              to="/login"
-              className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
-            >
-              <LogIn className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-              <span className="font-medium">Login</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
+                {user.role === "admin" && (
+                  <Link
+                    to="/admin"
+                    className="group flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-all duration-300 relative"
+                  >
+                    <div className="h-5 w-5 flex items-center justify-center font-bold border-2 border-gray-600 group-hover:border-purple-600 rounded text-xs group-hover:scale-110 transition-all">
+                      A
+                    </div>
+                    <span className="font-medium">Admin</span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
+                  </Link>
+                )}
 
-            <Link
-              to="/signup"
-              className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
-            >
-              <UserPlus className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-              <span className="font-medium">Signup</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
+                <button
+                  onClick={logout}
+                  className="group flex items-center space-x-2 text-gray-600 hover:text-red-500 transition-all duration-300 relative"
+                >
+                  <LogOut className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-medium">Logout</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-6">
+                <Link
+                  to="/login"
+                  className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
+                >
+                  <LogIn className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-medium">Login</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+
+                <Link
+                  to="/signup"
+                  className="group flex items-center space-x-2 text-gray-600 hover:text-cyan-600 transition-all duration-300 relative"
+                >
+                  <UserPlus className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-medium">Signup</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -8,6 +8,11 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Checkout from "./components/Checkout";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import AdminDashboard from "./components/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
+
 const App = () => {
   return (
     <Router>
@@ -15,11 +20,40 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </Router>
