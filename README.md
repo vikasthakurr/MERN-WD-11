@@ -16,6 +16,36 @@ ShopHub is a full-featured e-commerce platform built using the MERN (MongoDB, Ex
   - Order management (Track recent orders and their details).
 - **Email Notifications**: Automated welcome and login emails (requires configuration).
 
+## 📚 Topics Covered (Curriculum)
+
+This repository serves as a comprehensive learning hub for modern web development. Below are the key concepts and technologies explored throughout the modules:
+
+### 🟨 JavaScript (Core & Advanced)
+
+- **Basics**: Data Types, Scopes, Closures, Hoisting.
+- **Async Programming**: Callbacks, Promises, Async/Await.
+- **Functional JS**: Higher-Order Functions (HOF), Currying, Function Borrowing.
+- **DOM & Browser**: Event Bubbling/Capturing, Debouncing, Throttling, DOM Manipulation.
+- **Objects**: Prototypes, Object Methods, and Advanced Object Manipulation.
+
+### ⚛️ React.js
+
+- **State Management**: Redux Toolkit, Context API, UseState.
+- **Hooks**: UseEffect, UseCallback, UseMemo, UseRef, Custom Hooks.
+- **Routing**: React Router (Params, Protected Routes).
+- **Forms**: Formik and Yup Validation.
+- **Optimization**: Skeleton Loading, Optimization techniques.
+- **Integration**: Axios for API calls and interceptors.
+
+### 🟩 Node.js & Express
+
+- **Core Modules**: Filesystem (FS), OS, Path, Events.
+- **CRUD Operations**: Building RESTful APIs with Express.
+- **Middleware**: Custom Middleware, CORS, Auth Interceptors.
+- **File Systems**: Multer for file/image uploads.
+- **Database**: MongoDB (Atlas/Local), Mongoose Schemas, Populate, Relationships.
+- **Communication**: Nodemailer for automated email services.
+
 ## 🛠️ Tech Stack
 
 - **Frontend**: React, Redux Toolkit, Tailwind CSS, Lucide Icons, Vite.
